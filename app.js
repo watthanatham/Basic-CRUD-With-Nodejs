@@ -11,8 +11,10 @@ app.get('/', (req, res) =>
     res.send('Welcome to CRUD Project')
 );
 
-// Routers
+// import router
+const customerRouter = require('./src/routes/customer');
 
-
+// create router
+app.use('/customer', customerRouter);
 
 app.listen(3000, () => console.log('server run listening on port 3000'));
