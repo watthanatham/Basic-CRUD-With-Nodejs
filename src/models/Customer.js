@@ -32,4 +32,15 @@ Customer.getCustomerById = (id, result) => {
         }
     })
 }
+Customer.deleteCustomerData = (id, result) => {
+    dbConn.query('DELETE FROM Customer WHERE cus_id = ?', [id], (err, res) => {
+        if(err) {
+            console.log('Error while deleting customer data');
+            result(null, err)
+        }else {
+            console.log('Deleted customer data completed');
+            result(null, res)
+        }
+    })
+}
 module.exports = Customer;
