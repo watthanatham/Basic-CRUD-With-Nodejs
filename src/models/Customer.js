@@ -21,4 +21,15 @@ Customer.getAllCustomer = (result) => {
         }
     })
 }
+Customer.getCustomerById = (id, result) => {
+    dbConn.query('SELECT * FROM Customer WHERE cus_id = ?', id, (err, res) => {
+        if(err) {
+            console.log('Error while fetching', err);
+            result(null,err);
+        }else {
+            console.log('Fetched by id successfully');
+            result(null,res);
+        }
+    })
+}
 module.exports = Customer;
